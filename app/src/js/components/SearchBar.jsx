@@ -8,10 +8,11 @@ export default class SearchBar extends React.Component {
 
   render() {
     return (
-      <div>
-        <input type="text"/>
+      <form>
+        <input onChange={this.props.onChange} type="text" placeholder='Search...'/>
         <input type="checkbox"/>
-      </div>
+        Solo productos en stock
+      </form>
     )
   }
 
