@@ -18,8 +18,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server --content-base app --hot --inline",
-    "test": "echo \"Error: no test specified\" && exit 1z"
+    "start": "./node_modules/.bin/webpack-dev-server --config webpack.config.js --content-base app/dist --inline --hot",
+    "test": "echo \"Error: no test specified\" && exit 1z" 
   },
   "author": "",
   "license": "ISC"
