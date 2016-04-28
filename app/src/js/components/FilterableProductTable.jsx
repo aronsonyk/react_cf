@@ -14,7 +14,9 @@ export default class FilterableProductTable extends React.Component {
 
   filterData(ev) {
     var search = ev.target.value
-    this.setState({filter: search})
+    setTimeout(() => {
+      this.setState({filter: search})
+    }, 2000)
   }
 
   render() {
