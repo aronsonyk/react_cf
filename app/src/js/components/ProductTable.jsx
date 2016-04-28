@@ -24,13 +24,16 @@ export default class ProductTable extends React.Component {
         }
       })
     }
-    else {
+    else if(this.props.products != null) {
       this.props.products.forEach(function(product) {
         if (product.category !== last_category)
           rows.push(<ProductCategoryRow category={ product.category } key={ product.category } />)
         rows.push(<ProductRow product={ product } key={ product.name } />)
         last_category = product.category
       })
+    }
+    else {
+      rows.push(<h1>Loading</h1>)
     }
     
     return ( 
