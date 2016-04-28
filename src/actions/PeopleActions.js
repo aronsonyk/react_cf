@@ -1,5 +1,7 @@
 import Reflux from 'reflux'
 
-export default let PeopleActions = Reflux.createActions({
+let PeopleActions = Reflux.createActions([
   'fetchPeople'
-})
+])
+
+export default PeopleActions

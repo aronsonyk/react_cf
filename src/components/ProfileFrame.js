@@ -1,11 +1,12 @@
 import React from 'react'
-import $ from 'jquery'
+
+import PeopleStore from '../stores/PeopleStore.js'
 
 import PictureFrame from './PictureFrame.js'
 import ProfileInfo from './ProfileInfo.js'
 
 export default class ProfileFrame extends React.Component {
-  
+
   constructor() {
     super()
     this.state = {
@@ -14,29 +15,15 @@ export default class ProfileFrame extends React.Component {
   }
 
   componentDidMount() {
-    let self = this
-    $.ajax({
-      url: 'https://randomuser.me/api/',
-      dataType: 'json',
-      success: function(data) {
-        console.log(data)
-        let profile = data.results[0]
-        self.setState({profile: profile});
-      } 
-    });
-
-    setTimeout(() => {
-      $.ajax({
-        url: 'https://randomuser.me/api/',
-        dataType: 'json',
-        success: function(data) {
-          console.log(data)
-          let profile = data.results[0]
-          self.setState({profile: profile});
-        } 
-      });
-    }, 5000)
+    this.unsubscribe = PeopleStore.listen(this.onProfileFetch, this);
   }
+
+  onProfileFetch(data) {
+    console.log(data)
+    this.setState({
+      profile: data.profile
+    })
+  } 
 
   render() {
     if(this.state.profile != null) {
@@ -49,6 +36,10 @@ export default class ProfileFrame extends React.Component {
     } else {
       return (<h1>loading</h1>)
     }
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe()
   }
 
 }

@@ -11,6 +11,7 @@ export default class PictureFrame extends React.Component {
   }
 
   render() {
+    console.log(this.props.picture)
     return (
       <img style={img_style} src={this.props.picture}/>
     )
