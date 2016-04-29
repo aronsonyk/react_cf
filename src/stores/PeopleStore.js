@@ -1,5 +1,5 @@
 import Reflux from 'reflux'
-import $ from 'jquery'
+import io from 'socket.io-client'
 
 import PeopleActions from '../actions/PeopleActions.js'
 
@@ -9,14 +9,16 @@ let PeopleStore = Reflux.createStore({
     this.fetchPeople()
   },
   fetchPeople: function() {
-    $.ajax({
-      url: 'https://randomuser.me/api/',
-      dataType: 'json'
-    })
-    .done((data) => {
-      let profile = data.results[0]
-      this.trigger({profile: profile})
-    })
+    this.socket = io('http://localhost:3000');
+    this.socket.on('people', (people) => {
+      var people = JSON.parse(people)
+      people = people.results[0]
+      this.trigger(people)
+    });
+  },
+  askForPeople: function() {
+    var ask = 'ask'
+    this.socket.emit('ask', ask);
   }
 })
 
