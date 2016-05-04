@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('sign', (sign) => {
-    data.push(sign)
+    data.unshift(sign)
     console.log(sign, data)
     io.emit('data', data)
   })

@@ -1,7 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-let logo = require('../images/yeoman.png');
+const logo = require('../images/cf.png')
+
+const fullScreen = {
+  padding: '10em',
+  margin: 0,
+  height: '100%'
+}
 
 export default class Sign extends React.Component {
 
@@ -11,10 +17,14 @@ export default class Sign extends React.Component {
 
   render() {
     return (
-      <div> 
-        <img src={ logo } alt="App Logo"/>
-        <h1>React Facilito, Pasa y firma</h1>
-        <Link to='sign'>Firma Aqui</Link>
+      <div style={fullScreen} class='home'> 
+        <img class='center-block' src={ logo } alt="App Logo"/>
+        <h1 class='text-center'>React Facilito, Pasa y firma</h1>
+        <Link to='sign'>
+          <button class='btn btn-default btn-lg center-block'>
+            FIRMA AHORA :D
+          </button>
+        </Link>
       </div>
     )
   }

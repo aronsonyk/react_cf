@@ -9,6 +9,13 @@ import CommentActions from '../actions/CommentActions'
 
 import CommentStore from '../stores/CommentStore'
 
+const padding = {
+  paddingTop: '2em',
+  paddingBottom: '2em',
+  paddingLeft: '10em',
+  paddingRight: '10em'
+}
+
 @ReactMixin.decorate(Reflux.connect(CommentStore, 'comments'))
 export default class Sign extends React.Component {
 
@@ -28,7 +35,6 @@ export default class Sign extends React.Component {
       "text": form_data[1].value,
       "id": form_data[2].value      
     }
-    console.log(comment)
     CommentActions.updateComments(comment)
   }
 
@@ -38,10 +44,12 @@ export default class Sign extends React.Component {
     } else {
       return (
         <div class='sing'> 
-          <h1>Firmas</h1>
-          <CommentBox 
-            onSubmit={ this.sendCommentsOnSubmit.bind(this) } 
-            data={ this.state.comments } />
+          <div style={padding}>
+            <h1>Firmas</h1>
+            <CommentBox 
+              onSubmit={ this.sendCommentsOnSubmit.bind(this) } 
+              data={ this.state.comments } />
+          </div>
         </div>
       )
     }

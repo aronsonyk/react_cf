@@ -9,10 +9,10 @@ export default class CommentForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.props.onSubmit} class='commentForm'>
-        <input type="text" name="author" placeholder="Nombre"/>
-        <input type="text" name="text" placeholder="Comentario"/>
+        <input type="text" class="form-control" name="author" placeholder="Nombre"/>
+        <input type="text" class="form-control" name="text" placeholder="Comentario"/>
+        <input type="submit" class="form-control" value="Firma!"/>
         <input type="hidden" name="id" value={Date.now()}/>
-        <input type="submit" value="Firma!"/>
       </form>
     )
   }

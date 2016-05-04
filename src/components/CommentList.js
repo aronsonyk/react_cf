@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
 
 import Comment from './Comment'
+
+const CSSTransitionGroup = require ('react-addons-css-transition-group')
 
 export default class CommentBox extends React.Component {
 
@@ -19,7 +21,9 @@ export default class CommentBox extends React.Component {
       })
     return (
       <div class='commentList'>
-        { all_comments }
+        <CSSTransitionGroup transitionName="comment" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+          { all_comments }
+        </CSSTransitionGroup>
       </div>
     )
   }
